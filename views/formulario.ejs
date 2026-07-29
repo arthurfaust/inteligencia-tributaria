@@ -7,20 +7,106 @@
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        body {
-            background-color: #f8f9fa;
+        :root {
+            --azul-royal-escuro: #000080;
+            --azul-royal-hover: #000080;
+            --amarelo: #fdc90c;
+            --amarelo-suave: rgba(197, 160, 89, 0.2);
+            --branco: #ffffff;
+            --fundo-pagina: #f8f9fa;
+            --texto-corpo: #334155;
+            --borda-suave: #e2e8f0;
+            --cinza-claro: #919497;
         }
+
+        body {
+            background-color: var(--fundo-pagina);
+            color: var(--texto-corpo);
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        }
+
         .auth-card {
-            background: #ffffff;
+            background: var(--branco);
             border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border: 1px solid var(--borda-suave);
+            border-top: 4px solid var(--amarelo);
+            box-shadow: 0 10px 25px rgba(10, 25, 47, 0.05);
             overflow: hidden;
         }
+
         .auth-header {
-            background-color: #0d6efd;
-            color: white;
-            padding: 20px;
+            background-color: var(--azul-royal-escuro);
+            color: var(--branco);
+            padding: 28px 20px;
             text-align: center;
+        }
+
+        .auth-header h2 {
+            font-size: 1.4rem;
+            letter-spacing: 0.5px;
+            font-weight: 600;
+        }
+
+        .form-label {
+            font-weight: 600;
+            font-size: 0.88rem;
+            color: var(--azul-royal-escuro);
+            margin-bottom: 6px;
+        }
+
+        .form-control, .form-select {
+            border: 1px solid var(--borda-suave);
+            border-radius: 8px;
+            padding: 10px 14px;
+            font-size: 0.95rem;
+            background-color: #fafafa;
+            transition: all 0.2s ease-in-out;
+        }
+
+        .form-control:focus, .form-select:focus {
+            background-color: var(--branco);
+            border-color: var(--amarelo);
+            box-shadow: 0 0 0 0.25rem var(--amarelo-suave);
+        }
+
+        .form-check-input {
+            border-color: #cbd5e1;
+            cursor: pointer;
+        }
+
+        .form-check-input:checked {
+            background-color: var(--azul-royal-escuro);
+            border-color: var(--amarelo);
+        }
+
+        .form-check-input:focus {
+            box-shadow: 0 0 0 0.2rem var(--amarelo-suave);
+            border-color: var(--amarelo);
+        }
+
+        .form-check-label {
+            font-size: 0.92rem;
+            color: var(--texto-corpo);
+            cursor: pointer;
+        }
+
+        .btn-custom {
+            background-color: var(--azul-royal-escuro);
+            color: var(--branco);
+            border: 1px solid var(--amarelo);
+            font-weight: 600;
+            font-size: 0.98rem;
+            padding: 12px;
+            border-radius: 8px;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-custom:hover {
+            background-color: var(--amarelo);
+            color: var(--branco);
+            border: 1px solid var(--azul-royal-escuro);
+            box-shadow: 0 4px 14px rgba(197, 160, 89, 0.35);
         }
     </style>
 </head>
@@ -31,9 +117,10 @@
         <div class="col-md-8 col-lg-6">
             <div class="auth-card">
                 <div class="auth-header">
-                    <h2 class="fw-bold mb-0">Formulário</h2>
+                    <h2 class="mb-0">Formulário de Diagnóstico</h2>
+                    <div class="gold-divider"></div>
                 </div>
-                <div class="p-4">
+                <div class="p-4 p-md-5">
                     <!-- Envia para o endpoint do backend -->
                     <form action="/formulario" method="POST">
                         
@@ -84,49 +171,49 @@
 
                         <!-- P0001: Múltipla Escolha -->
                         <div class="mb-4">
-                            <label class="form-label d-block">Qual o principal objetivo do cliente com este diagnóstico?</label>
+                            <label class="form-label d-block mb-2">Qual o principal objetivo do cliente com este diagnóstico?</label>
                             
-                            <div class="form-check mb-1">
+                            <div class="form-check mb-2">
                                 <input class="form-check-input" type="checkbox" name="P0001[]" id="obj1" value="Redução tributária">
                                 <label class="form-check-label" for="obj1">Redução tributária</label>
                             </div>
-                            <div class="form-check mb-1">
+                            <div class="form-check mb-2">
                                 <input class="form-check-input" type="checkbox" name="P0001[]" id="obj2" value="Sucessão">
                                 <label class="form-check-label" for="obj2">Sucessão</label>
                             </div>
-                            <div class="form-check mb-1">
+                            <div class="form-check mb-2">
                                 <input class="form-check-input" type="checkbox" name="P0001[]" id="obj3" value="Organização patrimonial">
                                 <label class="form-check-label" for="obj3">Organização patrimonial</label>
                             </div>
-                            <div class="form-check mb-1">
+                            <div class="form-check mb-2">
                                 <input class="form-check-input" type="checkbox" name="P0001[]" id="obj4" value="Venda de empresa">
                                 <label class="form-check-label" for="obj4">Venda de empresa</label>
                             </div>
-                            <div class="form-check mb-1">
+                            <div class="form-check mb-2">
                                 <input class="form-check-input" type="checkbox" name="P0001[]" id="obj5" value="Venda de imóvel">
                                 <label class="form-check-label" for="obj5">Venda de imóvel</label>
                             </div>
-                            <div class="form-check mb-1">
+                            <div class="form-check mb-2">
                                 <input class="form-check-input" type="checkbox" name="P0001[]" id="obj6" value="Exterior">
                                 <label class="form-check-label" for="obj6">Exterior</label>
                             </div>
-                            <div class="form-check mb-1">
+                            <div class="form-check mb-2">
                                 <input class="form-check-input" type="checkbox" name="P0001[]" id="obj7" value="Regularização fiscal">
                                 <label class="form-check-label" for="obj7">Regularização fiscal</label>
                             </div>
-                            <div class="form-check mb-1">
+                            <div class="form-check mb-2">
                                 <input class="form-check-input" type="checkbox" name="P0001[]" id="obj8" value="Reforma tributária">
                                 <label class="form-check-label" for="obj8">Reforma tributária</label>
                             </div>
-                            <div class="form-check mb-1">
+                            <div class="form-check mb-2">
                                 <input class="form-check-input" type="checkbox" name="P0001[]" id="obj9" value="Outro">
                                 <label class="form-check-label" for="obj9">Outro</label>
                             </div>
                         </div>
 
                         <!-- Botão Enviar -->
-                        <div class="d-grid gap-2 mb-3">
-                            <button type="submit" class="btn btn-primary btn-lg">Enviar Respostas</button>
+                        <div class="d-grid gap-2 mt-4">
+                            <button type="submit" class="btn btn-custom">Enviar Respostas</button>
                         </div>
                     </form>
                 </div>
