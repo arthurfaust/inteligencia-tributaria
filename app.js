@@ -1,5 +1,6 @@
 const createError = require('http-errors');
 const express = require('express');
+const session = require('express-session');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
@@ -10,7 +11,7 @@ const indexRouter = require('./routes/index');
 const app = express();
 
 app.use(session({
-  secret: process.env.SESSION_SECRET,
+  secret: process.env.SESSION_SECRET || 'senha_sessao',
   resave: false,
   saveUninitialized: true,
   cookie: { 
@@ -27,8 +28,8 @@ app.use(helmet());
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(cookieParser());
 
 // Rota principal da aplicação
 app.use('/', indexRouter);
