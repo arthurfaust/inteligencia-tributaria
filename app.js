@@ -11,12 +11,6 @@ const indexRouter = require('./routes/index');
 
 const app = express();
 
-const limiter = rate_limit({
-  windowMs: 15 * 60 * 1000, // 15 minutos
-  max: 100, // Limite de 100 requisições por IP
-  message: 'Muitas requisições feitas a partir deste IP, por favor tente novamente mais tarde.'
-});
-
 app.use(session({
   secret: process.env.SESSION_SECRET,
   resave: false,
@@ -34,7 +28,6 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 app.use(helmet());
-app.use(limiter);
 app.use(logger('dev'));
 app.use(express.json({ limit: '10kb' }));
 app.use(express.urlencoded({ extended: false, limit: '10kb' }));

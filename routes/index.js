@@ -1,11 +1,11 @@
 var express = require('express');
 var router = express.Router();
 
-router.get('/formulario', function(req, res, next) {
+router.get('/formulario', limiter,(req, res) => {
   res.render('formulario');
 });
 
-router.post('/formulario', function(req, res, next) {
+router.post('/formulario', limiter, (req, res) => {
   const data = req.body;
   res.json({
     message: 'Formulário recebido com sucesso!',
