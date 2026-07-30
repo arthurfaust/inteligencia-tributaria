@@ -18,12 +18,14 @@ const limiter = rate_limit({
 });
 
 app.use(session({
-  secret: process.env.SESSION_SECRET || 'senha_sessao',
+  secret: process.env.SESSION_SECRET,
   resave: false,
-  saveUninitialized: true,
+  saveUninitialized: false, // Evita salvar sessões não modificadas
   cookie: { 
-    httpOnly: true,
-    secure: false 
+    httpOnly: true, // Impede que scripts no navegador leiam o cookie (Proteção XSS)
+    maxAge: 60 * 60 * 1000, // 1 hora
+    sameSite: 'strict', // Protege contra ataques CSRF
+    secure: process.env.NODE_ENV === 'production' // Garante que o cookie seja enviado apenas em conexões HTTPS em produção
   }
 }));
 
@@ -38,6 +40,10 @@ app.use(express.json({ limit: '10kb' }));
 app.use(express.urlencoded({ extended: false, limit: '10kb' }));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(cookieParser());
+
+if (process.env.NODE_ENV === 'production') {
+  app.set('trust proxy', 1);
+}
 
 // Rota principal da aplicação
 app.use('/', indexRouter);
