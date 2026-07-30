@@ -1,6 +1,7 @@
 const createError = require('http-errors');
 const express = require('express');
 const session = require('express-session');
+const rate_limit = require('express-rate-limit');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
@@ -9,6 +10,12 @@ const helmet = require('helmet');
 const indexRouter = require('./routes/index');
 
 const app = express();
+
+const limiter = rate_limit({
+  windowMs: 15 * 60 * 1000, // 15 minutos
+  max: 100, // Limite de 100 requisições por IP
+  message: 'Muitas requisições feitas a partir deste IP, por favor tente novamente mais tarde.'
+});
 
 app.use(session({
   secret: process.env.SESSION_SECRET || 'senha_sessao',
@@ -25,9 +32,10 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 app.use(helmet());
+app.use(limiter);
 app.use(logger('dev'));
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(express.json({ limit: '10kb' }));
+app.use(express.urlencoded({ extended: false, limit: '10kb' }));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(cookieParser());
 
