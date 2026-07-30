@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+const { limiter } = require('../middlewares/rate_limit');
 
 router.get('/formulario', limiter,(req, res) => {
   res.render('formulario');

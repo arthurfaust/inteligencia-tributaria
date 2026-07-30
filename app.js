@@ -1,7 +1,6 @@
 const createError = require('http-errors');
 const express = require('express');
 const session = require('express-session');
-const rate_limit = require('express-rate-limit');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
