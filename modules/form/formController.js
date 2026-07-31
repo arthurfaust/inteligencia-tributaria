@@ -1,11 +1,24 @@
-exports.getForm = (req, res) => {
-    res.render('formulario', { title: 'Formulário' });
+const formService = require('./formService');
+
+exports.renderForm = (req, res) => {
+    res.render('form');
 }
 
-exports.submitForm = (req, res) => {
+exports.submitForm = async (req, res) => {
     const data = req.body;
-    res.json({
-        message: 'Formulário recebido com sucesso!',
-        data: data
-    });
+    
+    try {
+        const isValid = await formService.validateForm(data);
+
+        if (!isValid) {
+            return res.status(400).send('Invalid form data');
+        }
+
+        await formService.persistForm(data);
+
+        res.redirect('/diagnostic');
+    } catch (error) {
+        console.error('Error processing form submission:', error);
+        res.status(500).send('Internal Server Error');
+    }
 }
