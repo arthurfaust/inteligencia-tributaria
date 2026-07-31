@@ -9,7 +9,6 @@
     <style>
         :root {
             --azul-royal-escuro: #000080;
-            --azul-royal-hover: #000080;
             --amarelo: #fdc90c;
             --amarelo-suave: rgba(197, 160, 89, 0.2);
             --branco: #ffffff;
@@ -127,45 +126,45 @@
                         <!-- P0002: Nome do cliente -->
                         <div class="mb-3">
                             <label for="P0002" class="form-label">Nome do Cliente</label>
-                            <input type="text" class="form-control" id="P0002" name="P0002" placeholder="Seu nome completo" required>
+                            <input type="text" class="form-control" id="nome" name="nome" placeholder="Seu nome completo" required>
                         </div>
 
                         <!-- P0003: CPF -->
                         <div class="mb-3">
                             <label for="P0003" class="form-label">CPF</label>
-                            <input type="text" class="form-control" id="P0003" name="P0003" placeholder="000.000.000-00" required>
+                            <input type="text" class="form-control" id="identificador" name="identificador" placeholder="000.000.000-00" required>
                         </div>
 
                         <!-- P0004: Data de nascimento -->
                         <div class="mb-3">
                             <label for="P0004" class="form-label">Data de Nascimento</label>
-                            <input type="date" class="form-control" id="P0004" name="P0004" required>
+                            <input type="date" class="form-control" id="dataNascimento" name="dataNascimento" required>
                         </div>
 
                         <!-- P0005: Estado civil -->
                         <div class="mb-3">
                             <label for="P0005" class="form-label">Estado Civil</label>
-                            <select class="form-select" id="P0005" name="P0005" required>
+                            <select class="form-select" id="estadoCivil" name="estadoCivil" required>
                                 <option value="" disabled selected>Selecione...</option>
-                                <option value="Solteiro">Solteiro</option>
-                                <option value="Casado">Casado</option>
-                                <option value="União estável">União estável</option>
-                                <option value="Divorciado">Divorciado</option>
-                                <option value="Viúvo">Viúvo</option>
+                                <option value="solteiro">Solteiro</option>
+                                <option value="casado">Casado</option>
+                                <option value="união estável">União estável</option>
+                                <option value="divorciado">Divorciado</option>
+                                <option value="viúvo">Viúvo</option>
                             </select>
                         </div>
 
                         <!-- P0006: Regime de bens -->
                         <div class="mb-3">
                             <label for="P0006" class="form-label">Regime de Bens</label>
-                            <select class="form-select" id="P0006" name="P0006" required>
+                            <select class="form-select" id="regimeBens" name="regimeBens" required>
                                 <option value="" disabled selected>Selecione...</option>
-                                <option value="Comunhão parcial">Comunhão parcial</option>
-                                <option value="Comunhão universal">Comunhão universal</option>
-                                <option value="Separação convencional">Separação convencional</option>
-                                <option value="Separação obrigatória">Separação obrigatória</option>
-                                <option value="Participação final nos aquestos">Participação final nos aquestos</option>
-                                <option value="Não se aplica">Não se aplica</option>
+                                <option value="comunhão parcial">Comunhão parcial</option>
+                                <option value="comunhão universal">Comunhão universal</option>
+                                <option value="separação convencional">Separação convencional</option>
+                                <option value="separação obrigatória">Separação obrigatória</option>
+                                <option value="participação final nos aquestos">Participação final nos aquestos</option>
+                                <option value="não se aplica">Não se aplica</option>
                             </select>
                         </div>
 
@@ -174,39 +173,39 @@
                             <label class="form-label d-block mb-2">Qual o principal objetivo do cliente com este diagnóstico?</label>
                             
                             <div class="form-check mb-2">
-                                <input class="form-check-input" type="checkbox" name="P0001[]" id="obj1" value="Redução tributária">
+                                <input class="form-check-input" type="checkbox" name="objetivo" id="obj1" value="redução tributária">
                                 <label class="form-check-label" for="obj1">Redução tributária</label>
                             </div>
                             <div class="form-check mb-2">
-                                <input class="form-check-input" type="checkbox" name="P0001[]" id="obj2" value="Sucessão">
+                                <input class="form-check-input" type="checkbox" name="objetivo" id="obj2" value="sucessão">
                                 <label class="form-check-label" for="obj2">Sucessão</label>
                             </div>
                             <div class="form-check mb-2">
-                                <input class="form-check-input" type="checkbox" name="P0001[]" id="obj3" value="Organização patrimonial">
+                                <input class="form-check-input" type="checkbox" name="objetivo" id="obj3" value="organização patrimonial">
                                 <label class="form-check-label" for="obj3">Organização patrimonial</label>
                             </div>
                             <div class="form-check mb-2">
-                                <input class="form-check-input" type="checkbox" name="P0001[]" id="obj4" value="Venda de empresa">
+                                <input class="form-check-input" type="checkbox" name="objetivo" id="obj4" value="venda de empresa">
                                 <label class="form-check-label" for="obj4">Venda de empresa</label>
                             </div>
                             <div class="form-check mb-2">
-                                <input class="form-check-input" type="checkbox" name="P0001[]" id="obj5" value="Venda de imóvel">
+                                <input class="form-check-input" type="checkbox" name="objetivo" id="obj5" value="venda de imóvel">
                                 <label class="form-check-label" for="obj5">Venda de imóvel</label>
                             </div>
                             <div class="form-check mb-2">
-                                <input class="form-check-input" type="checkbox" name="P0001[]" id="obj6" value="Exterior">
+                                <input class="form-check-input" type="checkbox" name="objetivo" id="obj6" value="exterior">
                                 <label class="form-check-label" for="obj6">Exterior</label>
                             </div>
                             <div class="form-check mb-2">
-                                <input class="form-check-input" type="checkbox" name="P0001[]" id="obj7" value="Regularização fiscal">
+                                <input class="form-check-input" type="checkbox" name="objetivo" id="obj7" value="regularização fiscal">
                                 <label class="form-check-label" for="obj7">Regularização fiscal</label>
                             </div>
                             <div class="form-check mb-2">
-                                <input class="form-check-input" type="checkbox" name="P0001[]" id="obj8" value="Reforma tributária">
+                                <input class="form-check-input" type="checkbox" name="objetivo" id="obj8" value="reforma tributária">
                                 <label class="form-check-label" for="obj8">Reforma tributária</label>
                             </div>
                             <div class="form-check mb-2">
-                                <input class="form-check-input" type="checkbox" name="P0001[]" id="obj9" value="Outro">
+                                <input class="form-check-input" type="checkbox" name="objetivo" id="obj9" value="outro">
                                 <label class="form-check-label" for="obj9">Outro</label>
                             </div>
                         </div>
