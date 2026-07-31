@@ -6,8 +6,12 @@ async function persistForm(data) {
 }
 
 async function validateForm(data) {
+    
     //logic to validate the form data
+    
     await console.log('Validating form data:\n', data);
     
     return true;
 }
+
+module.exports = { persistForm, validateForm };
