@@ -1,4 +1,5 @@
 const formService = require('./formService');
+const formValidator = require('./formValidator');
 
 exports.renderForm = (req, res) => {
     res.render('form');
@@ -8,7 +9,7 @@ exports.submitForm = async (req, res) => {
     const data = req.body;
     
     try {
-        const isValid = await formService.validateForm(data);
+        const isValid = await formValidator.validateForm(data);
 
         if (!isValid) {
             return res.status(400).send('Invalid form data');
